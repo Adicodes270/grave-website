@@ -3,12 +3,12 @@
     --navbar-text-color: hsl(0, 0%, 100%);
     /* --bg-color: linear-gradient(to bottom, hsl(150, 40%, 12%), hsl(0, 0%, 0%)); */
     /* --bg-color: linear-gradient(to bottom, hsl(150, 60%, 8%), hsl(0, 0%, 0%)); */
-    --bg-color: linear-gradient(135deg, hsl(211, 61%, 8%), hsl(0, 0%, 0%));
+    --bg-color: linear-gradient(hsl(0, 0%, 0%), hsl(0, 0%, 15%));
 
     --accent-color: hsl(0, 0%, 3%);
     --hover-bg: hsl(0, 0%, 31%);
     --btn-bg: hsl(0, 0%, 0%);
-    --btn2-bg : linear-gradient( hsl(211, 62%, 19%), hsl(276, 100%, 3%));
+    --btn2-bg : linear-gradient( hsl(162, 63%, 19%), hsl(276, 100%, 3%));
 
 
     --nav-padding-y: 1.25rem;
@@ -21,6 +21,9 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    min-width: 100%;
+
 }
 
 .container {
@@ -29,12 +32,16 @@ body {
     background: var(--bg-color);
 }
 
+
+
+
 .navbar {
-    display: flex;
+    display: flex; 
     align-items: center;
     padding: 1.5rem 5%;
-    gap: 22rem;
-    padding: var(--nav-padding-y) var(--nav-padding-x);
+    gap:0;
+    justify-content: space-between;
+
     background: transparent;
 }
 
@@ -103,17 +110,11 @@ a {
 }
 
 .hero-section {
-    display: flex;
-    align-items: flex-start;
-
-    justify-content: flex-start;
-
-    min-height: 80vh;
-
-
-    padding-top: 8rem;
-    padding-right: 30%;
-    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    padding: 5rem 10%; 
+    gap: 4rem;
+    align-items: center;
 }
 
 .hero-content {
@@ -122,7 +123,7 @@ a {
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 700;
     line-height: 1.1;
     margin-bottom: 1.5rem;
@@ -140,25 +141,27 @@ a {
 }
 
 .hero-btn-container {
-    display: flex;       /* Aligns children (buttons) horizontally */
-    gap: 2rem;          /* Sets the exact 2rem gap you wanted */
-    align-items: center; /* Ensures they stay level with each other */
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap; 
 }
 
 .button-hero {
-    display: flex;
+    background: rgba(255, 255, 255, 0.05); 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(10px); 
+    border-radius: 9999px;
+    padding: 0.8rem 2.2rem;
+    font-size: 1.1rem;
+    color: #fff;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    background: var(--btn2-bg);
-    color: hsla(0, 0%, 100%, 0.8);
-    border: none;
-    padding: 0.75rem 2rem;
-    border-radius: 3.1rem;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 1.3rem;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.button-hero:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .button-hero i {
@@ -169,3 +172,4 @@ a {
 .button-hero span {
     color: hsl(0, 0%, 31%)
 }
+
