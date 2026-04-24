@@ -1,64 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/x-icon" href="assets/grave.ico">
-
-    <title>GRAVE WEBSITE</title>
+    <title>GRAVE — Ultimate DC Managing Bot</title>
 </head>
-
 <body>
     <div class="container">
-        <div class="navbar">
-            <div class="heading">
-                <img src="assets/grave.webp" alt="GRAVE Logo">
 
+        <!-- NAVBAR -->
+        <nav class="navbar">
+            <div class="heading">
+                <a href="https://discord.com/oauth2/authorize?client_id=1489199956052017224&permissions=8&integration_type=0&scope=applications.commands+bot">
+                    <img src="assets/grave.webp" alt="GRAVE Logo">
+                </a>
             </div>
-            <ul class="nav-links">
-                <li><a href="#">Commands</a></li>
-                <li><a href="#">Status</a></li>
-                <li><a href="#">Docs</a></li>
-                <li><a href="#">FAQS</a></li>
+
+            <!-- Hamburger for mobile -->
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#commands">Commands</a></li>
+                <li><a href="#status">Status</a></li>
+                <li><a href="#docs">Docs</a></li>
+                <li><a href="#faqs">FAQs</a></li>
+                <li><a href="#features">Features</a></li>
             </ul>
 
-            <a href="https://github.com/Adicodes270/grave-dc-bot" target="_blank">
+            <a href="https://github.com/Adicodes270/grave-dc-bot" target="_blank" class="github-btn">
                 <button>
                     <i class="fa-brands fa-github"></i> Github
                 </button>
             </a>
-        </div>
+        </nav>
 
-        <div class="hero-section">
+        <!-- HERO -->
+        <section class="hero-section">
             <div class="hero-content">
-                <h1>bleed is Discord's<br>
-                    premier all-in-one app </h1>
-                <p>Meet the leading bot for management and engagement. Built to<br> elevate your community’s experience,
-                    streamline server management,<br> and provide you access to premium resources for every necessity.
-                </p>
-
-
+                <span class="hero-badge"><i class="fa-brands fa-discord"></i> Discord Bot</span>
+                <h1>GRAVE is Discord's<br>Ultimate <span class="accent">Multipurpose</span> Discord Bot</h1>
+                <p>Grave is a powerful all-in-one Discord bot designed to do it all—moderation, music, utilities, games, automation, and more. Built for both control and creativity, Grave keeps your server running smoothly while adding depth and fun to every interaction. Simple to use, endlessly flexible—Grave handles everything so you don’t have to</p>
                 <div class="hero-btn-container">
                     <a href="https://discord.com/oauth2/authorize?client_id=1489199956052017224&permissions=8&integration_type=0&scope=applications.commands+bot" target="_blank">
-                        <button class="button-hero"><i class="fa-brands fa-discord"></i>Add Grave</button>
+                        <button class="button-hero primary"><i class="fa-brands fa-discord"></i> Add Grave</button>
                     </a>
                     <a href="https://discord.gg/j4jb6y2wFG" target="_blank">
-                        <button id="explore" class="button-hero"></i>Explore </button>
+                        <button class="button-hero secondary"><i class="fa-solid fa-arrow-right"></i> Explore</button>
                     </a>
                 </div>
-
             </div>
+            <div class="hero-visual">
+                <div class="glow-ring"></div>
+                <img src="assets/grave.webp" alt="GRAVE Bot" class="hero-img" />
+            </div>
+        </section>
 
-        </div>
+        <!-- STATS STRIP -->
+        <section class="stats-strip" id="hidden">
+            <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Servers</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat"><span class="stat-num">200+</span><span class="stat-label">Commands</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat"><span class="stat-num">99.9%</span><span class="stat-label">Uptime</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">Support</span></div>
+        </section>
 
-        <script src="script.js"></script>
+        <!-- FEATURES PREVIEW -->
+        <section class="features-preview" id="Features">
+            <h2 class="section-title">Why Choose <span class="accent">GRAVE?</span></h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Moderation And Security</h3>
+                    <p>Advanced Moderation commands like Anti-Nuke and Manual Moderation commands to moderate your server effectively.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-music"></i></div>
+                    <h3>Economy</h3>
+                    <p>Grave has his own economy system with jobs,bank,gambling,currency and many more features.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-gear"></i></div>
+                    <h3>Server Setup</h3>
+                    <p>All essential commands to setup a server like welcome and leave messages setup all in one place.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <h3>Gain Info</h3>
+                    <p>Get detailed information about your server and its members.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>© 2026 GRAVE Bot · Built with <span class="accent">♥</span> by <a href="https://github.com/Adicodes270" target="_blank">Adicodes270</a></p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
 </body>
-
-</html>
+</html>>
