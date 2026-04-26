@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>・GRAVE - COMMANDS</title>
+  <meta name="description" content="Full list of GRAVE bot commands. Moderation, economy, utilities and more.">
+  <link rel="icon" type="image/x-icon" href="assets/grave.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+  </style>
+</head>
+<body>
+
+<div id="particle-bg"></div>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-inner">
+      <a class="nav-brand" href="index.html">
+        <img src="assets/grave.webp" alt="GRAVE">
+        <span class="nav-brand-name">GRAVE</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="commands.html" style="color: var(--text);">Commands</a></li>
+        <li><a href="#status">Status</a></li>
+        <li><a href="#docs">Docs</a></li>
+        <li><a href="questions.html">FAQs</a></li>
+        <li><a href="index.html#features">Features</a></li>
+      </ul>
+      <div class="nav-end">
+        <a class="nav-gh" href="https://github.com/Adicodes270/grave-dc-bot" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+        <a class="nav-add" href="https://discord.com/oauth2/authorize?client_id=1489199956052017224&permissions=8&integration_type=0&scope=applications.commands+bot" target="_blank">Add to Discord</a>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+        <svg id="icon-menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+        <svg id="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="commands.html">Commands</a>
+      <a href="#status">Status</a>
+      <a href="#docs">Docs</a>
+      <a href="questions.html">FAQs</a>
+      <a href="index.html#features">Features</a>
+      <a href="https://discord.com/oauth2/authorize?client_id=1489199956052017224&permissions=8&integration_type=0&scope=applications.commands+bot" target="_blank">Add to Discord</a>
+    </div>
+  </div>
+</nav>
+
+<section class="commands-page">
+  <div class="wrap">
+    <div class="page-header rv vis">
+      <span class="sec-label">Full Reference</span>
+      <h1 class="page-title">Commands</h1>
+      <p class="page-desc">Everything GRAVE can do, in one place. Use the search or filter by category.</p>
+      <div class="search-wrap">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="search-input" id="search" type="text" placeholder="Search commands..." autocomplete="off" spellcheck="false">
+      </div>
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-tab="all">All</button>
+        <button class="tab" data-tab="status">Status</button>
+        <button class="tab" data-tab="info">Info</button>
+        <button class="tab" data-tab="test">Test</button>
+        <button class="tab" data-tab="economy">Economy</button>
+        <button class="tab" data-tab="moderation">Moderation</button>
+        <button class="tab" data-tab="setup">Setup</button>
+      </div>
+    </div>
+
+    <p class="result-count" id="result-count"></p>
+
+    <div class="commands-grid" id="commands-grid">
+
+      <div class="command-category rv vis" data-category="moderation">
+        <div class="gl">
+          <div class="cat-header">
+            <span class="command-title">Moderation</span>
+            <span class="cat-badge">Security</span>
+          </div>
+          <ul class="command-list">
+            <li><span class="cmd-name">/kick</span><span class="cmd-desc">Kick a member</span></li>
+            <li><span class="cmd-name">/ban</span><span class="cmd-desc">Ban a member</span></li>
+            <li><span class="cmd-name">/timeout</span><span class="cmd-desc">Timeout a member</span></li>
+            <li><span class="cmd-name">/untimeout</span><span class="cmd-desc">Remove timeout from a member</span></li>
+            <li><span class="cmd-name">/unban</span><span class="cmd-desc">Unban a user by mention or ID</span></li>
+            <li><span class="cmd-name">/role</span><span class="cmd-desc">Add or remove a role from a user</span></li>
+            <li><span class="cmd-name">/warn</span><span class="cmd-desc">Warn a member</span></li>
+            <li><span class="cmd-name">/unwarn</span><span class="cmd-desc">Remove warnings from a member</span></li>
+            <li><span class="cmd-name">/warnreset</span><span class="cmd-desc">Reset all warnings for a member</span></li>
+            <li><span class="cmd-name">/warnings</span><span class="cmd-desc">View warnings for a member</span></li>
+            <li><span class="cmd-name">/clearwarnings</span><span class="cmd-desc">Clear all warnings for a member</span></li>
+            <li><span class="cmd-name">/warnstatus</span><span class="cmd-desc">Show a full warning status overview for a member</span></li>
+            <li><span class="cmd-name">/purge</span><span class="cmd-desc">Delete the last N messages in this channel</span></li>
+            <li><span class="cmd-name">/rolecreate</span><span class="cmd-desc">Create a new role by name</span></li>
+            <li><span class="cmd-name">/roles</span><span class="cmd-desc">List server roles by hierarchy (paginated)</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="command-category rv d2 vis" data-category="economy">
+        <div class="gl">
+          <div class="cat-header">
+            <span class="command-title">Economy</span>
+            <span class="cat-badge">Currency</span>
+          </div>
+          <ul class="command-list">
+            <li><span class="cmd-name">/daily</span><span class="cmd-desc">Claim 1,000–5,000 coins once per 24 hours</span></li>
+            <li><span class="cmd-name">/weekly</span><span class="cmd-desc">Claim 20,000–50,000 coins once per 7 days</span></li>
+            <li><span class="cmd-name">/monthly</span><span class="cmd-desc">Claim 400,000–700,000 coins once per 30 days</span></li>
+            <li><span class="cmd-name">/balance</span><span class="cmd-desc">Check your or another member's coin balance</span></li>
+            <li><span class="cmd-name">/bal</span><span class="cmd-desc">Alias for balance</span></li>
+            <li><span class="cmd-name">/pay</span><span class="cmd-desc">Pay another user coins (supports k/m/b/all)</span></li>
+            <li><span class="cmd-name">/work</span><span class="cmd-desc">Work a job to earn coins (12h cooldown). Use .work for job list</span></li>
+            <li><span class="cmd-name">/bank</span><span class="cmd-desc">Deposit coins to earn 1.5% daily compound interest</span></li>
+            <li><span class="cmd-name">/achievements</span><span class="cmd-desc">View your achievements or another member's achievements</span></li>
+            <li><span class="cmd-name">/a</span><span class="cmd-desc">Alias for achievements</span></li>
+            <li><span class="cmd-name">/coinflip</span><span class="cmd-desc">Gamble coins (supports k/m/all) on a 50/50 coin flip</span></li>
+            <li><span class="cmd-name">/cf</span><span class="cmd-desc">Alias for coinflip</span></li>
+            <li><span class="cmd-name">/russianroullette</span><span class="cmd-desc">2-player russian roulette duel (supports k/m/b/all)</span></li>
+            <li><span class="cmd-name">/rr</span><span class="cmd-desc">Alias for russianroullette</span></li>
+            <li><span class="cmd-name">/numberhunt</span><span class="cmd-desc">Number Hunt lobby game (server-only). Public if no members; private if members given.</span></li>
+            <li><span class="cmd-name">/rob</span><span class="cmd-desc">Rob a member's coins (60% success rate)</span></li>
+            <li><span class="cmd-name">/robbank</span><span class="cmd-desc">Rob a member's bank deposit or your own (5% success rate)</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="command-category rv d1 vis" data-category="setup">
+        <div class="gl">
+          <div class="cat-header">
+            <span class="command-title">Server Setup</span>
+            <span class="cat-badge">Config</span>
+          </div>
+          <ul class="command-list">
+            <li><span class="cmd-name">/welcomesetup</span><span class="cmd-desc">Set the welcome channel for join messages</span></li>
+            <li><span class="cmd-name">/leavesetup</span><span class="cmd-desc">Set the leave channel for leave messages</span></li>
+            <li><span class="cmd-name">/disablewelcomesetup</span><span class="cmd-desc">Disable welcome messages</span></li>
+            <li><span class="cmd-name">/disableleavesetup</span><span class="cmd-desc">Disable leave messages</span></li>
+            <li><span class="cmd-name">/setjoinrole</span><span class="cmd-desc">Set the role to assign to new members when they join</span></li>
+            <li><span class="cmd-name">/removejoinrole</span><span class="cmd-desc">Remove the auto-join role</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="command-category rv d2 vis" data-category="setup">
+        <div class="gl">
+          <div class="cat-header">
+            <span class="command-title">Logging</span>
+            <span class="cat-badge">Setup</span>
+          </div>
+          <ul class="command-list">
+            <li><span class="cmd-name">/logs set</span><span class="cmd-desc">Set the logging channel</span></li>
+            <li><span class="cmd-name">/logs disable</span><span class="cmd-desc">Disable server logging</span></li>
+            <li><span class="cmd-name">/logs config</span><span class="cmd-desc">Configure what events get logged</span></li>
+            <li><span class="cmd-name">/prefix set</span><span class="cmd-desc">Change the server command prefix</span></li>
+            <li><span class="cmd-name">/modrole set</span><span class="cmd-desc">Set the moderator role</span></li>
+            <li><span class="cmd-name">/adminrole set</span><span class="cmd-desc">Set the admin role</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="command-category rv vis" data-category="info">
+        <div class="gl">
+          <div class="cat-header">
+            <span class="command-title">Server Info</span>
+            <span class="cat-badge">Info</span>
+          </div>
+          <ul class="command-list">
+            <li><span class="cmd-name">/avatar</span><span class="cmd-desc">Show a user avatar</span></li>
+            <li><span class="cmd-name">/banner</span><span class="cmd-desc">Show a user banner</span></li>
+            <li><span class="cmd-name">/userinfo</span><span class="cmd-desc">User info</span></li>
+            <li><span class="cmd-name">/serverinfo</span><span class="cmd-desc">Server info</span></li>
+            <li><span class="cmd-name">/snipe</span><span class="cmd-desc">Show last deleted message in this channel</span></li>
+            <li><span class="cmd-name">/s</span><span class="cmd-desc">Alias for snipe</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="command-category rv d1 vis" data-category="status">
+        <div class="gl">
+          <div class="cat-header">
+            <span class="command-title">Status</span>
+            <span class="cat-badge">Status</span>
+          </div>
+          <ul class="command-list">
+            <li><span class="cmd-name">/ping</span><span class="cmd-desc">Check bot latency</span></li>
+            <li><span class="cmd-name">/version</span><span class="cmd-desc">Show current bot version</span></li>
+            <li><span class="cmd-name">/v</span><span class="cmd-desc">Alias for version</span></li>
+            <li><span class="cmd-name">/afk</span><span class="cmd-desc">Set AFK status (auto clears when you message)</span></li>
+            <li><span class="cmd-name">/setprefix</span><span class="cmd-desc">Set the command prefix for this server</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="command-category rv d2 vis" data-category="test">
+        <div class="gl">
+          <div class="cat-header">
+            <span class="command-title">Test</span>
+            <span class="cat-badge">Test</span>
+          </div>
+          <ul class="command-list">
+            <li><span class="cmd-name">/hello</span><span class="cmd-desc">Say hello</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="empty-state" id="empty-state">
+        <p class="empty-title">No commands found</p>
+        <p class="empty-sub">Try a different search term or category.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="cta-section">
+  <div class="wrap">
+    <div class="gl cta-card rv vis">
+      <div>
+        <h2 class="cta-title">Ready to add GRAVE?</h2>
+        <p class="cta-sub">All these commands, one invite link.</p>
+      </div>
+      <div class="cta-btns">
+        <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1489199956052017224&permissions=8&integration_type=0&scope=applications.commands+bot" target="_blank">Add to Discord</a>
+        <a class="btn btn-secondary" href="https://discord.gg/j4jb6y2wFG" target="_blank">Support</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/grave.webp" alt="GRAVE">
+        <span class="footer-name">GRAVE</span>
+      </div>
+      <span class="footer-copy">© 2026 GRAVE Bot · Built by <a href="https://github.com/Adicodes270" target="_blank">Adicodes270</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  var navToggle = document.getElementById('nav-toggle');
+  var mobileMenu = document.getElementById('mobile-menu');
+  var iconMenu = document.getElementById('icon-menu');
+  var iconClose = document.getElementById('icon-close');
+  navToggle.addEventListener('click', function() {
+    var open = mobileMenu.classList.toggle('open');
+    iconMenu.style.display = open ? 'none' : 'block';
+    iconClose.style.display = open ? 'block' : 'none';
+  });
+  document.querySelectorAll('.mobile-menu a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      mobileMenu.classList.remove('open');
+      iconMenu.style.display = 'block';
+      iconClose.style.display = 'none';
+    });
+  });
+
+  var ro = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('vis'); ro.unobserve(e.target); }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -20px 0px' });
+  document.querySelectorAll('.rv').forEach(function(el) { ro.observe(el); });
+
+  var activeTab = 'all';
+  var searchVal = '';
+
+  function filterCommands() {
+    var cards = document.querySelectorAll('.command-category');
+    var visible = 0;
+
+    cards.forEach(function(card) {
+      var cat = card.getAttribute('data-category');
+      var text = card.innerText.toLowerCase();
+      var tabMatch = activeTab === 'all' || cat === activeTab;
+      var searchMatch = searchVal === '' || text.includes(searchVal);
+
+      if (tabMatch && searchMatch) {
+        card.classList.remove('hidden');
+        visible++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    var empty = document.getElementById('empty-state');
+    var count = document.getElementById('result-count');
+    empty.classList.toggle('show', visible === 0);
+    count.textContent = searchVal || activeTab !== 'all'
+      ? visible + ' categor' + (visible === 1 ? 'y' : 'ies') + ' shown'
+      : '';
+  }
+
+  document.querySelectorAll('.tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      activeTab = tab.getAttribute('data-tab');
+      filterCommands();
+    });
+  });
+
+  var searchInput = document.getElementById('search');
+  var searchTimer;
+  searchInput.addEventListener('input', function() {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(function() {
+      searchVal = searchInput.value.trim().toLowerCase();
+      filterCommands();
+    }, 160);
+  });
+</script>
+
+</body>
+</html>
