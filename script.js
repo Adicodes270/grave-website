@@ -1,95 +1,89 @@
-// ── Hamburger menu ──────────────────────────────────
-const hamburger = document.getElementById('hamburger');
-const navLinks  = document.getElementById('nav-links');
+(function() {
+  var s = document.createElement('script');
+  s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+  s.onload = function() {
+    var container = document.getElementById('particle-bg');
+    var SEP = 150, AX = 38, AY = 52;
 
-if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('open');
-        navLinks.classList.toggle('open');
-    });
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 10000);
+    camera.position.set(0, 355, 1220);
 
-    // Close when a link is clicked
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('open');
-            navLinks.classList.remove('open');
-        });
-    });
-}
+    var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0x000000, 0);
+    container.appendChild(renderer.domElement);
 
-// ── FAQ Accordion ────────────────────────────────────
-document.querySelectorAll('.faq-question').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const item = btn.closest('.faq-item');
-        const isOpen = item.classList.contains('open');
-
-        // Close all
-        document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-
-        // Toggle current
-        if (!isOpen) item.classList.add('open');
-    });
-});
-
-// ── Command Search & Filter ──────────────────────────
-const cmdSearch  = document.getElementById('cmdSearch');
-const filterBtns = document.querySelectorAll('.filter-btn');
-const cmdTable   = document.getElementById('cmdTable');
-const noResults  = document.getElementById('noResults');
-
-let activeCategory = 'all';
-
-function filterCommands() {
-    if (!cmdTable) return;
-    const query = cmdSearch ? cmdSearch.value.toLowerCase() : '';
-    const rows  = cmdTable.querySelectorAll('tbody tr');
-    let visible = 0;
-
-    rows.forEach(row => {
-        const text = row.textContent.toLowerCase();
-        const cat  = row.getAttribute('data-cat');
-        const matchSearch = text.includes(query);
-        const matchCat    = activeCategory === 'all' || cat === activeCategory;
-        const show        = matchSearch && matchCat;
-
-        row.style.display = show ? '' : 'none';
-        if (show) visible++;
-    });
-
-    if (noResults) noResults.style.display = visible === 0 ? 'block' : 'none';
-}
-
-if (cmdSearch) cmdSearch.addEventListener('input', filterCommands);
-
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        activeCategory = btn.getAttribute('data-cat');
-        filterCommands();
-    });
-});
-
-// ── Uptime Bars (Status page) ────────────────────────
-const uptime = document.getElementById('uptimeBars');
-if (uptime) {
-    for (let i = 0; i < 90; i++) {
-        const bar = document.createElement('div');
-        bar.className = 'uptime-bar';
-        // Simulate mostly-up with occasional degraded
-        const r = Math.random();
-        if (r > 0.97)       bar.classList.add('warn');
-        else if (r > 0.995) bar.classList.add('down');
-        else                bar.classList.add('up');
-        bar.title = `Day ${90 - i}: ${bar.classList.contains('up') ? 'Operational' : bar.classList.contains('warn') ? 'Degraded' : 'Outage'}`;
-        uptime.appendChild(bar);
+    var pos = [], col = [];
+    for (var ix = 0; ix < AX; ix++) {
+      for (var iy = 0; iy < AY; iy++) {
+        pos.push(ix * SEP - (AX * SEP) / 2, 0, iy * SEP - (AY * SEP) / 2);
+        col.push(0.929, 0.910, 0.890);
+      }
     }
-}
 
-// ── Smooth active link highlight ─────────────────────
-const currentPage = window.location.pathname.split('/').pop();
-document.querySelectorAll('.nav-links a').forEach(link => {
-    if (link.getAttribute('href') === currentPage) {
-        link.classList.add('active');
+    var geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+    geo.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
+
+    var mat = new THREE.PointsMaterial({ size: 7, vertexColors: true, transparent: true, opacity: 0.17, sizeAttenuation: true });
+    scene.add(new THREE.Points(geo, mat));
+
+    var count = 0, active = true;
+
+    function animate() {
+      if (!active) return;
+      requestAnimationFrame(animate);
+      var pa = geo.attributes.position.array;
+      var i = 0;
+      for (var ix = 0; ix < AX; ix++) {
+        for (var iy = 0; iy < AY; iy++) {
+          pa[i * 3 + 1] = Math.sin((ix + count) * 0.3) * 50 + Math.sin((iy + count) * 0.5) * 50;
+          i++;
+        }
+      }
+      geo.attributes.position.needsUpdate = true;
+      renderer.render(scene, camera);
+      count += 0.08;
     }
+
+    document.addEventListener('visibilitychange', function() {
+      active = !document.hidden;
+      if (active) animate();
+    });
+
+    window.addEventListener('resize', function() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }, { passive: true });
+
+    animate();
+  };
+  document.head.appendChild(s);
+})();
+
+var navToggle = document.getElementById('nav-toggle');
+var mobileMenu = document.getElementById('mobile-menu');
+var iconMenu = document.getElementById('icon-menu');
+var iconClose = document.getElementById('icon-close');
+navToggle.addEventListener('click', function() {
+  var open = mobileMenu.classList.toggle('open');
+  iconMenu.style.display = open ? 'none' : 'block';
+  iconClose.style.display = open ? 'block' : 'none';
 });
+document.querySelectorAll('.mobile-menu a').forEach(function(a) {
+  a.addEventListener('click', function() {
+    mobileMenu.classList.remove('open');
+    iconMenu.style.display = 'block';
+    iconClose.style.display = 'none';
+  });
+});
+
+var ro = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('vis'); ro.unobserve(e.target); }
+  });
+}, { threshold: 0.07, rootMargin: '0px 0px -20px 0px' });
+document.querySelectorAll('.rv').forEach(function(el) { ro.observe(el); });

@@ -1,111 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/x-icon" href="assets/grave.ico">
-    <title>GRAVE — Ultimate DC Managing Bot</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>・GRAVE</title>
+  <meta name="description" content="The ultimate multipurpose Discord bot.">
+  <link rel="icon" type="image/x-icon" href="assets/grave.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
 
-        <!-- NAVBAR -->
-        <nav class="navbar">
-            <div class="heading">
-                <a href="https://discord.com/oauth2/authorize?client_id=1489199956052017224&permissions=8&integration_type=0&scope=applications.commands+bot">
-                    <img src="assets/grave.webp" alt="GRAVE Logo">
-                </a>
-            </div>
+<div id="particle-bg"></div>
 
-            <!-- Hamburger for mobile -->
-            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-                <span></span><span></span><span></span>
-            </button>
-
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#commands">Commands</a></li>
-                <li><a href="#status">Status</a></li>
-                <li><a href="#docs">Docs</a></li>
-                <li><a href="#faqs">FAQs</a></li>
-                <li><a href="#features">Features</a></li>
-            </ul>
-
-            <a href="https://github.com/Adicodes270/grave-dc-bot" target="_blank" class="github-btn">
-                <button>
-                    <i class="fa-brands fa-github"></i> Github
-                </button>
-            </a>
-        </nav>
-
-        <!-- HERO -->
-        <section class="hero-section">
-            <div class="hero-content">
-                <span class="hero-badge"><i class="fa-brands fa-discord"></i> Discord Bot</span>
-                <h1>GRAVE is Discord's<br>Ultimate <span class="accent">Multipurpose</span> Discord Bot</h1>
-                <p>Grave is a powerful all-in-one Discord bot designed to do it all—moderation, music, utilities, games, automation, and more. Built for both control and creativity, Grave keeps your server running smoothly while adding depth and fun to every interaction. Simple to use, endlessly flexible—Grave handles everything so you don’t have to</p>
-                <div class="hero-btn-container">
-                    <a href="https://discord.com/oauth2/authorize?client_id=1489199956052017224&permissions=8&integration_type=0&scope=applications.commands+bot" target="_blank">
-                        <button class="button-hero primary"><i class="fa-brands fa-discord"></i> Add Grave</button>
-                    </a>
-                    <a href="https://discord.gg/j4jb6y2wFG" target="_blank">
-                        <button class="button-hero secondary"><i class="fa-solid fa-arrow-right"></i> Explore</button>
-                    </a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="glow-ring"></div>
-                <img src="assets/grave.webp" alt="GRAVE Bot" class="hero-img" />
-            </div>
-        </section>
-
-        <!-- STATS STRIP -->
-        <section class="stats-strip" id="hidden">
-            <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Servers</span></div>
-            <div class="stat-divider"></div>
-            <div class="stat"><span class="stat-num">200+</span><span class="stat-label">Commands</span></div>
-            <div class="stat-divider"></div>
-            <div class="stat"><span class="stat-num">99.9%</span><span class="stat-label">Uptime</span></div>
-            <div class="stat-divider"></div>
-            <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">Support</span></div>
-        </section>
-
-        <!-- FEATURES PREVIEW -->
-        <section class="features-preview" id="Features">
-            <h2 class="section-title">Why Choose <span class="accent">GRAVE?</span></h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3>Moderation And Security</h3>
-                    <p>Advanced Moderation commands like Anti-Nuke and Manual Moderation commands to moderate your server effectively.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-music"></i></div>
-                    <h3>Economy</h3>
-                    <p>Grave has his own economy system with jobs,bank,gambling,currency and many more features.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-gear"></i></div>
-                    <h3>Server Setup</h3>
-                    <p>All essential commands to setup a server like welcome and leave messages setup all in one place.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
-                    <h3>Gain Info</h3>
-                    <p>Get detailed information about your server and its members.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="footer">
-            <p>© 2026 GRAVE Bot · Built with <span class="accent">♥</span> by <a href="https://github.com/Adicodes270" target="_blank">Adicodes270</a></p>
-        </footer>
-
+<nav>
+  <div class="wrap">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#">
+        <img src="assets/grave.webp" alt="GRAVE">
+        <span class="nav-brand-name">GRAVE</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#commands">Commands</a></li>
+        <li><a href="#status">Status</a></li>
+        <li><a href="#docs">Docs</a></li>
+        <li><a href="#faqs">FAQs</a></li>
+        <li><a href="#features">Features</a></li>
+      </ul>
+      <div class="nav-end">
+        <a class="nav-gh" href="https://github.com/Adicodes270/grave-dc-bot" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+        <a class="nav-add" href="https://discord.com/oauth2/authorize?client_id=1489199956052017224&permissions=8&integration_type=0&scope=applications.commands+bot" target="_blank">Add to Discord</a>
+      </div>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+        <svg id="icon-menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+        <svg id="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
     </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#commands">Commands</a>
+      <a href="#status">Status</a>
+      <a href="#docs">Docs</a>
+      <a href="#faqs">FAQs</a>
+      <a href="#features">Features</a>
+      <a href="https://discord.com/oauth2/authorize?client_id=1489199956052017224&permissions=8&integration_type=0&scope=applications.commands+bot" target="_blank">Add to Discord</a>
+    </div>
+  </div>
+</nav>
 
-    <script src="script.js"></script>
+<section class="hero">
+  <div class="hero-img-wrap">
+    <div class="hero-glow"></div>
+    <img class="hero-img" src="assets/grave.webp" alt="GRAVE Bot">
+  </div>
+  <div class="hero-kicker">
+    <span class="kdot"></span>
+    Discord Bot
+    <span class="kdot"></span>
+  </div>
+  <h1 class="hero-title">GRAVE</h1>
+  <p class="hero-sub">Ultimate Multipurpose Bot</p>
+  <p class="hero-desc">Moderation, economy, utilities, automation and more. Simple to set up, endlessly flexible. GRAVE handles everything so you don't have to.</p>
+  <div class="hero-btns">
+    <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1489199956052017224&permissions=8&integration_type=0&scope=applications.commands+bot" target="_blank">Add to Discord</a>
+    <a class="btn btn-secondary" href="https://discord.gg/j4jb6y2wFG" target="_blank">
+      Support Server
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="stats-bar">
+  <div class="gl">
+    <div class="stats-inner">
+      <div class="stat-item rv vis"><span class="stat-num">10+</span><span class="stat-label">Servers</span></div>
+      <div class="stat-item rv d1 vis"><span class="stat-num">200+</span><span class="stat-label">Commands</span></div>
+      <div class="stat-item rv d2 vis"><span class="stat-num">99.9%</span><span class="stat-label">Uptime</span></div>
+      <div class="stat-item rv d3 vis"><span class="stat-num">24/7</span><span class="stat-label">Support</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section class="section" id="features">
+  <div class="wrap">
+    <div class="feat-layout">
+      <div class="feat-left rv vis">
+        <span class="sec-label">Features</span>
+        <h2 class="sec-title">Why choose GRAVE?</h2>
+        <p class="sec-desc">Built for control and creativity. Whether you're running a tight-knit group or a large community, GRAVE adapts to you.</p>
+      </div>
+      <div class="feat-grid">
+        <div class="feat-card rv d1 vis">
+          <div class="gl">
+            <span class="feat-num">01</span>
+            <div class="feat-name">Moderation & Security</div>
+            <p class="feat-desc">Anti-Nuke, manual moderation commands, and role management. Keep your server locked down.</p>
+          </div>
+        </div>
+        <div class="feat-card rv d2 vis">
+          <div class="gl">
+            <span class="feat-num">02</span>
+            <div class="feat-name">Economy System</div>
+            <p class="feat-desc">Jobs, banking, gambling, and currency. Keep members invested and active.</p>
+          </div>
+        </div>
+        <div class="feat-card rv d1 vis">
+          <div class="gl">
+            <span class="feat-num">03</span>
+            <div class="feat-name">Server Setup</div>
+            <p class="feat-desc">Welcome messages, leave messages, autoroles. All essential config in one place.</p>
+          </div>
+        </div>
+        <div class="feat-card rv d2 vis">
+          <div class="gl">
+            <span class="feat-num">04</span>
+            <div class="feat-name">Server Info</div>
+            <p class="feat-desc">Detailed info on any member or channel, pulled instantly. Know your community.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="cta-section">
+  <div class="wrap">
+    <div class="gl cta-card rv vis">
+      <div>
+        <h2 class="cta-title">Add GRAVE now</h2>
+        <p class="cta-sub">Takes 10 seconds. No setup headaches.</p>
+      </div>
+      <div class="cta-btns">
+        <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1489199956052017224&permissions=8&integration_type=0&scope=applications.commands+bot" target="_blank">Add to Discord</a>
+        <a class="btn btn-secondary" href="https://discord.gg/j4jb6y2wFG" target="_blank">Support</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/grave.webp" alt="GRAVE">
+        <span class="footer-name">GRAVE</span>
+      </div>
+      <span class="footer-copy">© 2026 GRAVE Bot · Built by <a href="https://github.com/Adicodes270" target="_blank">Adicodes270</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+
 </body>
-</html>>
+</html>
