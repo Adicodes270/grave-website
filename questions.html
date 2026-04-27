@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>・GRAVE - COMMANDS</title>
-    <meta name="description" content="Full list of GRAVE bot commands. Moderation, economy, utilities and more.">
+    <title>GRAVE — FAQ</title>
+    <meta name="description" content="Frequently asked questions about GRAVE, the ultimate multipurpose Discord bot.">
     <link rel="icon" type="image/x-icon" href="assets/grave.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +13,271 @@
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
+        .faq-page {
+            padding: 120px 0 100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+
+        .faq-header .sec-label {
+            justify-content: center;
+        }
+
+        .faq-header .page-title {
+            margin-bottom: 14px;
+        }
+
+        .faq-header .page-desc {
+            margin: 0 auto;
+        }
+
+        .faq-layout {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .faq-nav {
+            position: sticky;
+            top: 80px;
+        }
+
+        .faq-nav-label {
+            font-size: 9.5px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--dim);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .faq-nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .faq-nav-item {
+            display: block;
+            padding: 8px 12px;
+            border-radius: 7px;
+            font-size: 13px;
+            color: var(--muted);
+            text-decoration: none;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .faq-nav-item:hover {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.04);
+            border-color: var(--border);
+        }
+
+        .faq-nav-item.active {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--border-h);
+        }
+
+        .faq-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 52px;
+        }
+
+        .faq-section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            letter-spacing: 2px;
+            color: var(--text);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .faq-section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .faq-item {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .faq-item .gl {
+            border-radius: 12px;
+        }
+
+        .faq-q {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 18px 22px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14.5px;
+            font-weight: 500;
+            color: var(--text);
+            text-align: left;
+            transition: color 0.2s;
+        }
+
+        .faq-q:hover {
+            color: var(--text);
+        }
+
+        .faq-q-text {
+            flex: 1;
+            line-height: 1.5;
+        }
+
+        .faq-icon {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s var(--ease);
+        }
+
+        .faq-icon svg {
+            transition: transform 0.3s var(--ease);
+        }
+
+        .faq-item.open .faq-icon {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--border-h);
+        }
+
+        .faq-item.open .faq-icon svg {
+            transform: rotate(45deg);
+        }
+
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.42s var(--ease), padding 0.3s var(--ease);
+        }
+
+        .faq-item.open .faq-a {
+            max-height: 400px;
+        }
+
+        .faq-a-inner {
+            padding: 0 22px 20px;
+            font-size: 14px;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.8;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding-top: 16px;
+        }
+
+        .faq-a-inner a {
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border-h);
+            padding-bottom: 1px;
+            transition: border-color 0.2s;
+        }
+
+        .faq-a-inner a:hover {
+            border-color: var(--text);
+        }
+
+        .faq-a-inner code {
+            font-family: 'Courier New', monospace;
+            font-size: 12.5px;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 1px 6px;
+            border-radius: 4px;
+            color: var(--text);
+        }
+
+        .still-stuck {
+            margin-top: 52px;
+            padding: 40px 44px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .stuck-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(28px, 4vw, 42px);
+            letter-spacing: 2px;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .stuck-sub {
+            font-size: 14px;
+            font-weight: 300;
+            color: var(--muted);
+        }
+
+        .stuck-btns {
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 760px) {
+            .faq-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-nav {
+                display: none;
+            }
+
+            .faq-page {
+                padding: 90px 0 72px;
+            }
+
+            .still-stuck {
+                padding: 28px 24px;
+                flex-direction: column;
+            }
+
+            .stuck-btns {
+                width: 100%;
+            }
+
+            .stuck-btns .btn {
+                flex: 1;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 
@@ -28,10 +293,10 @@
                     <span class="nav-brand-name">GRAVE</span>
                 </a>
                 <ul class="nav-links">
-                    <li><a href="commands.html" style="color: var(--text);">Commands</a></li>
+                    <li><a href="commands.html">Commands</a></li>
                     <li><a href="#status">Status</a></li>
-                    <li><a href="#docs">Docs</a></li>
-                    <li><a href="questions.html">FAQs</a></li>
+                    <li><a href="docs.html">Docs</a></li>
+                    <li><a href="questions.html" style="color: var(--text);">FAQs</a></li>
                     <li><a href="index.html#features">Features</a></li>
                 </ul>
                 <div class="nav-end">
@@ -64,8 +329,8 @@
             <div class="mobile-menu" id="mobile-menu">
                 <a href="commands.html">Commands</a>
                 <a href="#status">Status</a>
-                <a href="#docs">Docs</a>
-                <a href="questions.html">FAQs</a>
+                <a href="docs.html">Docs</a>
+                <a href="questions.html" style="color: var(--text);">FAQs</a>
                 <a href="index.html#features">Features</a>
                 <a href="https://discord.com/oauth2/authorize?client_id=1489199956052017224&permissions=8&integration_type=0&scope=applications.commands+bot"
                     target="_blank">Add to Discord</a>
@@ -73,57 +338,557 @@
         </div>
     </nav>
 
-
-    <section class="faqs-page">
+    <section class="faq-page">
         <div class="wrap">
-            <div class="page-header rv vis">
-                <h1 class="page-title">FAQs</h1>
-                <p class="page-desc">Frequently asked questions about GRAVE.</p>
 
+            <div class="faq-header rv vis">
+                <span class="sec-label">Got Questions</span>
+                <h1 class="page-title">Frequently Asked</h1>
+                <p class="page-desc">Everything you probably wanted to know before asking in the support server.</p>
             </div>
-            <div class="faqs">
-                <h1 class="faqs-h1">FREQUENTLY ASKED QUESTIONS</h1>
-                <hr id="faqs-hr1">
-                <div class="faq-item">
-                    <details>
-                        <summary>How do I add GRAVE to my server?</summary>
-                        <p>Click the "Add to Discord" button at the top of the page, select your server, and authorize
-                            the bot with the required permissions.</p>
-                        
-                    </details>
-                    <details>
-                        <summary>Is GRAVE free to use?</summary>
-                        <p>Yes, GRAVE is completely free to use with no premium features or paid tiers.</p>
 
-                    </details>
+            <div class="faq-layout">
 
-                    <details>
-                        <summary>Where can I get support for GRAVE?</summary>
-                        <p>You can join our support server on Discord by clicking the "Support Server" button at the top
-                            of the page.</p>
-                    </details>
+                <!-- SIDE NAV -->
+                <aside class="faq-nav rv vis">
+                    <span class="faq-nav-label">Jump to</span>
+                    <ul class="faq-nav-list">
+                        <li><a class="faq-nav-item active" onclick="scrollTo('general')">General</a></li>
+                        <li><a class="faq-nav-item" onclick="scrollTo('setup')">Setup</a></li>
+                        <li><a class="faq-nav-item" onclick="scrollTo('moderation')">Moderation</a></li>
+                        <li><a class="faq-nav-item" onclick="scrollTo('economy')">Economy</a></li>
+                        <li><a class="faq-nav-item" onclick="scrollTo('troubleshoot')">Troubleshooting</a></li>
+                    </ul>
+                </aside>
 
-                    <details>
-                        <summary>How can I contribute to GRAVE's development?</summary>
-                        <p>Join our Support Server and ping aditya270 or arooshbd2122 to become a contributor.</p>
-                    </details>
+                <!-- FAQ CONTENT -->
+                <div class="faq-sections">
 
-                    <details>
-                        <summary>Where can I find the documentation for GRAVE?</summary>
-                        <p>You can find the full documentation for GRAVE's features and commands on the <a href="#docs" style="color: var(--text);">Docs</a> page.</p>
+                    <!-- GENERAL -->
+                    <div id="faq-general">
+                        <div class="faq-section-title rv vis">General</div>
+                        <div class="faq-list rv vis">
 
-                    </details>
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">What exactly is GRAVE?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">GRAVE is an all-in-one Discord bot built to handle
+                                        everything your server needs — moderation, economy, server setup, info commands,
+                                        and fun. The idea is you shouldn't need five different bots cluttering your
+                                        server when one does it all cleanly.</div>
+                                </div>
+                            </div>
 
-                    <details>
-                        <summary>How do I report a bug or suggest a feature?</summary>
-                        <p>You can report bugs or suggest features in our support server.</p>
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">Is GRAVE free to use?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">Yes, completely. Every feature listed on this site is
+                                        available with no paywalls, no premium tiers, no subscription. Just add the bot
+                                        and use it.</div>
+                                </div>
+                            </div>
 
-                    </details>
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">How many commands does GRAVE have?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">Over 200 commands across moderation, economy, setup, info,
+                                        utility, and fun categories. You can browse the full list on the <a
+                                            href="commands.html">Commands page</a>.</div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">What's GRAVE's uptime like?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">99.9%. GRAVE runs 24/7 and is monitored continuously. If
+                                        something goes down you'll usually know about it in the support server before
+                                        you even notice it yourself.</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- SETUP -->
+                    <div id="faq-setup">
+                        <div class="faq-section-title rv vis">Setup</div>
+                        <div class="faq-list rv vis">
+
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">How do I add GRAVE to my server?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">Hit the <a
+                                            href="https://discord.com/oauth2/authorize?client_id=1489199956052017224&permissions=8&integration_type=0&scope=applications.commands+bot"
+                                            target="_blank">Add to Discord</a> button, pick your server, and authorize.
+                                        Takes about 10 seconds. No setup wizard, no configuration required to get
+                                        started.</div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">What permissions does GRAVE need?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">The invite link requests Administrator by default, which
+                                        covers everything. If you prefer granular control, the minimum GRAVE needs to
+                                        function properly is: Manage Roles, Kick Members, Ban Members, Manage Channels,
+                                        Read Messages, Send Messages, Embed Links, and Manage Messages.</div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">How do I set up welcome messages?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">Run <code>/welcome set</code> in the channel you want
+                                        messages sent to, then use <code>/welcome message</code> to customize the text.
+                                        You can disable it anytime with <code>/welcome disable</code>. Same flow applies
+                                        for leave messages using <code>/leave</code>.</div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">Can I change the command prefix?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">Yes. Use <code>/prefix set [prefix]</code> to change it
+                                        server-wide. Keep it short — single characters like <code>!</code>,
+                                        <code>?</code>, or <code>.</code> work best and avoid conflicts with other bots.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">How do I set up autoroles?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">Run <code>/autorole set @role</code>. From then on every
+                                        new member who joins gets that role automatically. Make sure GRAVE's role is
+                                        higher than the target role in the role hierarchy or Discord will block the
+                                        assignment.</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- MODERATION -->
+                    <div id="faq-moderation">
+                        <div class="faq-section-title rv vis">Moderation</div>
+                        <div class="faq-list rv vis">
+
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">What is Anti-Nuke and how does it work?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">Anti-Nuke monitors your server for destructive actions —
+                                        mass channel deletes, mass bans, mass role deletions — and automatically
+                                        punishes the responsible account. Enable it with <code>/antinuke</code> and
+                                        configure thresholds with <code>/antinuke config</code>. You can whitelist
+                                        trusted admins with <code>/whitelist add</code> so they don't trigger it.</div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">Do warnings persist? Can I clear them?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">Yes, warnings are stored and persist until manually
+                                        cleared. Use <code>/warnings @user</code> to view their history and
+                                        <code>/clearwarn @user</code> to wipe it. Only members with moderation
+                                        permissions can issue or clear warnings.</div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">How does /lockdown work?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner"><code>/lockdown</code> removes the Send Messages permission
+                                        from @everyone across all channels instantly. Use it when things go sideways
+                                        fast. <code>/unlockdown</code> restores everything back to how it was.</div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">Can I set a dedicated mod role?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">Yes. Use <code>/modrole set @role</code> and that role
+                                        gains access to moderation commands without needing full administrator. Same
+                                        goes for admins via <code>/adminrole set @role</code>.</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ECONOMY -->
+                    <div id="faq-economy">
+                        <div class="faq-section-title rv vis">Economy</div>
+                        <div class="faq-list rv vis">
+
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">How does the economy system work?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">Members earn currency through <code>/daily</code>,
+                                        <code>/work</code>, and gambling commands. There's a wallet and a bank — your
+                                        wallet can be robbed, your bank can't. Use <code>/deposit</code> and
+                                        <code>/withdraw</code> to move money between them. Spend it in the shop or flex
+                                        on the <code>/leaderboard</code>.</div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">Is the economy shared across servers?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">No. Each server has its own completely separate economy.
+                                        Balances, leaderboards, and shops are all local to the server they were earned
+                                        in.</div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">Can someone steal my money?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">Only from your wallet, and only if <code>/rob</code>
+                                        succeeds — it's not guaranteed and comes with a failure penalty if they get
+                                        caught. Anything stored in your bank with <code>/deposit</code> is untouchable.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">How often can I claim /daily?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">Once every 24 hours. The cooldown resets from the time you
+                                        last claimed, not at midnight. GRAVE will tell you exactly how long you have
+                                        left if you try too early.</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- TROUBLESHOOTING -->
+                    <div id="faq-troubleshoot">
+                        <div class="faq-section-title rv vis">Troubleshooting</div>
+                        <div class="faq-list rv vis">
+
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">GRAVE isn't responding to commands. What do I do?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">Check these in order: make sure GRAVE has permission to
+                                        read and send messages in that channel; confirm you're using the right prefix
+                                        (default is <code>!</code>); check the command isn't disabled with
+                                        <code>/commands</code>; and verify GRAVE is actually online in the member list.
+                                        If none of that works, hop in the <a href="https://discord.gg/j4jb6y2wFG"
+                                            target="_blank">support server</a>.</div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">GRAVE can't ban or kick members. Why?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">Almost always a role hierarchy issue. GRAVE's role needs to
+                                        be above the role of the member you're trying to moderate in Server Settings →
+                                        Roles. Discord prevents any bot or user from actioning someone with an equal or
+                                        higher role.</div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">Commands show up but do nothing when I run them.</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">The command might have been disabled by a server admin.
+                                        Check if it shows as inactive in <code>/commands</code>. If you have admin
+                                        access, you can re-enable it. Otherwise contact your server admin.</div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">How do I report a bug or request a feature?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">Open an issue on the <a
+                                            href="https://github.com/Adicodes270/grave-dc-bot" target="_blank">GitHub
+                                            repo</a> for bugs — include what command you ran, what you expected, and
+                                        what actually happened. Feature requests go in the <a
+                                            href="https://discord.gg/j4jb6y2wFG" target="_blank">support server</a> in
+                                        the suggestions channel.</div>
+                                </div>
+                            </div>
+
+                            <div class="faq-item gl">
+                                <button class="faq-q" onclick="toggle(this)">
+                                    <span class="faq-q-text">Where do I get help if my question isn't here?</span>
+                                    <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></span>
+                                </button>
+                                <div class="faq-a">
+                                    <div class="faq-a-inner">The <a href="https://discord.gg/j4jb6y2wFG"
+                                            target="_blank">support server</a> is the fastest way to get a response.
+                                        Drop your question in the help channel and someone will get back to you.</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- STILL STUCK -->
+                    <div class="gl still-stuck rv vis">
+                        <div>
+                            <div class="stuck-title">Still stuck?</div>
+                            <p class="stuck-sub">The support server is the move. Real answers, fast.</p>
+                        </div>
+                        <div class="stuck-btns">
+                            <a class="btn btn-primary" href="https://discord.gg/j4jb6y2wFG" target="_blank">Join Support
+                                Server</a>
+                            <a class="btn btn-secondary" href="https://github.com/Adicodes270/grave-dc-bot"
+                                target="_blank">GitHub</a>
+                        </div>
+                    </div>
 
                 </div>
             </div>
 
+        </div>
+    </section>
 
+    <footer>
+        <div class="wrap">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <img src="assets/grave.webp" alt="GRAVE">
+                    <span class="footer-name">GRAVE</span>
+                </div>
+                <span class="footer-copy">© 2026 GRAVE Bot · Built by <a href="https://github.com/Adicodes270"
+                        target="_blank">Adicodes270</a></span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        var navToggle = document.getElementById('nav-toggle');
+        var mobileMenu = document.getElementById('mobile-menu');
+        var iconMenu = document.getElementById('icon-menu');
+        var iconClose = document.getElementById('icon-close');
+        navToggle.addEventListener('click', function () {
+            var open = mobileMenu.classList.toggle('open');
+            iconMenu.style.display = open ? 'none' : 'block';
+            iconClose.style.display = open ? 'block' : 'none';
+        });
+        document.querySelectorAll('.mobile-menu a').forEach(function (a) {
+            a.addEventListener('click', function () {
+                mobileMenu.classList.remove('open');
+                iconMenu.style.display = 'block';
+                iconClose.style.display = 'none';
+            });
+        });
+
+        var ro = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) { e.target.classList.add('vis'); ro.unobserve(e.target); }
+            });
+        }, { threshold: 0.07, rootMargin: '0px 0px -20px 0px' });
+        document.querySelectorAll('.rv').forEach(function (el) { ro.observe(el); });
+
+        function toggle(btn) {
+            var item = btn.closest('.faq-item');
+            var isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item.open').forEach(function (el) {
+                if (el !== item) el.classList.remove('open');
+            });
+            item.classList.toggle('open', !isOpen);
+        }
+
+        function scrollTo(id) {
+            var el = document.getElementById('faq-' + id);
+            if (!el) return;
+            var offset = 80;
+            var top = el.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+            document.querySelectorAll('.faq-nav-item').forEach(function (n) { n.classList.remove('active'); });
+            event.currentTarget.classList.add('active');
+        }
+
+        window.addEventListener('scroll', function () {
+            var sections = ['general', 'setup', 'moderation', 'economy', 'troubleshoot'];
+            var active = sections[0];
+            sections.forEach(function (id) {
+                var el = document.getElementById('faq-' + id);
+                if (!el) return;
+                if (el.getBoundingClientRect().top < 120) active = id;
+            });
+            document.querySelectorAll('.faq-nav-item').forEach(function (n, i) {
+                n.classList.toggle('active', sections[i] === active);
+            });
+        }, { passive: true });
+    </script>
 
 </body>
 
